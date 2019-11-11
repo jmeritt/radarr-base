@@ -1,1 +1,1 @@
-# radarr-base
+# sonarr-base
