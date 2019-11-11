@@ -1,0 +1,73 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: radarr
+  labels:
+    app: radarr
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: radarr
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: radarr
+    spec:
+      initContainers:
+      # - name: copy-config
+      #   image: busybox
+      #   command: ['/bin/sh', '-c', 'cp /config-src/*.xml /config/config.xml']
+      #   securityContext:
+      #     privileged: true
+      #   volumeMounts:
+      #   - name: config
+      #     mountPath: /config
+      #   - name: config-src
+      #     mountPath: /config-src
+      - name: init-priveleges-config
+        image: busybox
+        command:
+        - chown
+        - -R
+        - 2580:2580
+        - /config
+        securityContext:
+          privileged: true
+        volumeMounts:
+        - name: config
+          mountPath: /config
+      containers:
+      - name: radarr
+        image: jmeritt/radarr
+        resources:
+          requests:
+            cpu: "64m"
+            memory: "256Mi"
+          limits:
+            cpu: "128m"
+            memory: "512Mi"
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 7878
+        volumeMounts:
+        - name: config
+          mountPath: /config
+        - name: downloads
+          mountPath: /downloads
+        - name: movies
+          mountPath: /htpc/movies
+      securityContext:
+        fsGroup: 2580
+      volumes:
+      - name: config
+        emptyDir: {}
+      # - name: config-src
+      #   configMap: 
+      #     name: sonarr-config
+      - name: downloads
+        emptyDir: {}
+      - name: movies
+        emptyDir: {}
