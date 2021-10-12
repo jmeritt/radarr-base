@@ -27,18 +27,18 @@ spec:
       #     mountPath: /config
       #   - name: config-src
       #     mountPath: /config-src
-      - name: init-priveleges-config
-        image: busybox
-        command:
-        - chown
-        - -R
-        - 2580:2580
-        - /config
-        securityContext:
-          privileged: true
-        volumeMounts:
-        - name: config
-          mountPath: /config
+      # - name: init-priveleges-config
+      #   image: busybox
+      #   command:
+      #   - chown
+      #   - -R
+      #   - 2580:2580
+      #   - /config
+      #   securityContext:
+      #     privileged: true
+      #   volumeMounts:
+      #   - name: config
+      #     mountPath: /config
       containers:
       - name: radarr
         image: jmeritt/radarr
