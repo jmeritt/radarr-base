@@ -11,8 +11,10 @@ RUN apt-get update && \
 
 USER htpc
 
+ENV VER=4.0.3.5879
+
 RUN cd ~ &&\
-	wget --content-disposition 'http://radarr.servarr.com/v1/update/master/updatefile?os=linux&runtime=netcore&arch=x64' &&\
+	wget --content-disposition "https://github.com/Radarr/Radarr/releases/download/v${VER}/Radarr.develop.${VER}.linux-core-x64.tar.gz" &&\
 	tar -xvzf Radarr*.linux*.tar.gz && \
 	rm Radarr*.linux*.tar.gz
 
