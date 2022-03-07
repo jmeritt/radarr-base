@@ -14,7 +14,7 @@ USER htpc
 ENV VER=4.0.5.5981
 
 RUN cd ~ &&\
-	wget --content-disposition "https://github.com/Radarr/Radarr/releases/download/v${VER}/Radarr.develop.${VER}.linux-core-x64.tar.gz" &&\
+	wget --content-disposition "https://github.com/Radarr/Radarr/releases/download/v${VER}/Radarr.master.${VER}.linux-core-x64.tar.gz" &&\
 	tar -xvzf Radarr*.linux*.tar.gz && \
 	rm Radarr*.linux*.tar.gz
 
