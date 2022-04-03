@@ -12,7 +12,9 @@ RUN apt-get update && \
 USER htpc
 
 ENV VER=4.1.0.6095
-ENV BRANCH=develop #master
+ENV BRANCH=develop 
+
+# master
 
 RUN cd ~ &&\
 	wget --content-disposition "https://github.com/Radarr/Radarr/releases/download/v${VER}/Radarr.${BRANCH}.${VER}.linux-core-x64.tar.gz" &&\
