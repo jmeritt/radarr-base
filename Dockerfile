@@ -11,7 +11,7 @@ RUN apt-get update && \
 
 USER htpc
 
-ENV VER=4.0.5.5981
+ENV VER=4.1.0.6095
 
 RUN cd ~ &&\
 	wget --content-disposition "https://github.com/Radarr/Radarr/releases/download/v${VER}/Radarr.master.${VER}.linux-core-x64.tar.gz" &&\
