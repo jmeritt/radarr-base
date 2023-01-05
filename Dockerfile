@@ -11,13 +11,13 @@ RUN apt-get update && \
 
 USER htpc
 
-ENV VER=4.3.1.6822
+ENV VER=4.3.2.6857
 ENV BRANCH=develop 
 
 # master
 
 RUN cd ~ &&\
-	wget --content-disposition "https://github.com/Radarr/Radarr/releases/download/v${VER}/Radarr.${BRANCH}.${VER}.linux-core-x64.tar.gz" &&\
+	wget --content-disposition "http://radarr.servarr.com/v1/update/master/updatefile?os=linux&runtime=netcore&arch=x64" &&\
 	tar -xvzf Radarr*.linux*.tar.gz && \
 	rm Radarr*.linux*.tar.gz
 
