@@ -11,7 +11,7 @@ RUN apt-get update && \
 
 USER htpc
 
-ENV VER=4.4.0.6882
+ENV VER=4.4.2.6956
 ENV BRANCH=develop 
 
 # master
