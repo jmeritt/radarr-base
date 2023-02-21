@@ -17,7 +17,7 @@ ENV BRANCH=develop
 # master
 
 RUN cd ~ &&\
-	wget --content-disposition "http://radarr.servarr.com/v1/update/master/updatefile?os=linux&runtime=netcore&arch=x64" &&\
+	wget --content-disposition "http://radarr.servarr.com/v1/update/${BRANCH}/updatefile?os=linux&runtime=netcore&arch=x64" &&\
 	tar -xvzf Radarr*.linux*.tar.gz && \
 	rm Radarr*.linux*.tar.gz
 
