@@ -2,16 +2,16 @@ FROM jmeritt/ubuntu-htpc
 
 RUN apt-get update && apt-get install -y curl mediainfo sqlite3 apt-transport-https
 
-RUN wget https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb &&\
+RUN wget https://packages.microsoft.com/config/ubuntu/22.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb &&\
 	dpkg -i packages-microsoft-prod.deb &&\
 	rm packages-microsoft-prod.deb
 
 RUN apt-get update && \
-  	apt-get install -y dotnet-sdk-5.0
+  	apt-get install -y dotnet-sdk-7.0
 
 USER htpc
 
-ENV VER=4.4.2.6956
+#ENV VER=4.4.2.6956
 ENV BRANCH=develop 
 
 # master
