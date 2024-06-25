@@ -16,29 +16,6 @@ spec:
       labels:
         app: radarr
     spec:
-      initContainers:
-      # - name: copy-config
-      #   image: busybox
-      #   command: ['/bin/sh', '-c', 'cp /config-src/*.xml /config/config.xml']
-      #   securityContext:
-      #     privileged: true
-      #   volumeMounts:
-      #   - name: config
-      #     mountPath: /config
-      #   - name: config-src
-      #     mountPath: /config-src
-      # - name: init-priveleges-config
-      #   image: busybox
-      #   command:
-      #   - chown
-      #   - -R
-      #   - 2580:2580
-      #   - /config
-      #   securityContext:
-      #     privileged: true
-      #   volumeMounts:
-      #   - name: config
-      #     mountPath: /config
       containers:
       - name: radarr
         image: jmeritt/radarr
@@ -61,6 +38,17 @@ spec:
           mountPath: /htpc/movies
       securityContext:
         fsGroup: 2580
+      # dnsPolicy: "None"
+      # dnsConfig:
+      #   nameservers:
+      #     - 192.168.22.1 # this is an example
+      #   searches:
+      #     - htpc.svc.cluster-domain.example
+      #     - svc.cluster.local 
+      #     - cluster.local
+      #   options:
+      #     - name: ndots
+      #       value: "5"
       volumes:
       - name: config
         emptyDir: {}
